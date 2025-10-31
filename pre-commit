@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -e
+
+black -l 130 .
+
+python3 toc.py > README.md
+python3 appendix.py > APPENDIX.md

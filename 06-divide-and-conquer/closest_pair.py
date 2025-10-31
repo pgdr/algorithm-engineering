@@ -1,6 +1,11 @@
+"""A divide and conquer algorithm for computing a closest pair of points in a
+set of $n$ points in the plane in time $O(n \\log n)$.  It outputs both their
+distance and the pair itself.
+"""
+
+import itertools as IT
 import math
 from collections import namedtuple as T
-import itertools as IT
 
 Point = T("Point", "x y")
 Sol = T("Sol", "delta pair")
@@ -13,13 +18,13 @@ def bruteforce(points):
 def closest_pair(X, Y):
     if len(X) <= 5:
         return bruteforce(X)
-    line = X[len(X) // 2].x
-    Xl = [p for p in X if p.x <= line]
-    Yl = [p for p in Y if p.x <= line]
-    Xr = [p for p in X if p.x > line]
-    Yr = [p for p in Y if p.x > line]
+    pivot = X[len(X) // 2]
+    Xl = [p for p in X if p <= pivot]
+    Yl = [p for p in Y if p <= pivot]
+    Xr = [p for p in X if p > pivot]
+    Yr = [p for p in Y if p > pivot]
     OPT = min(closest_pair(Xl, Yl), closest_pair(Xr, Yr))
-    S = [p for p in Y if abs(p.x - line) < OPT.delta]
+    S = [p for p in Y if abs(p.x - pivot.x) < OPT.delta]
     if len(S) > 1:
         OPT = min(OPT, min(bruteforce(IT.islice(S[i:], 6)) for i in range(len(S) - 1)))
     return OPT
@@ -34,7 +39,7 @@ def closest(points):
 # Driver
 import random
 
-N = 1000
-P = [Point(random.random() * 100, random.random() * 100) for _ in range(N)]
+N = 100
+P = [Point(random.random() * 1000, random.random() * 1000) for _ in range(N)]
 delta, (p1, p2) = closest(P)
 print("delta:", round(delta, 3))
