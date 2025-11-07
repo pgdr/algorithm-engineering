@@ -3,8 +3,19 @@
 A repository of Python snippets for different algorithms.
 
 
+## Greedy
+
+* [Stable Matching](01-greedy/stable_matching.py)
+  - The Gale–Shapley algorithm for Stable Matching.  The algorithm runs
+    in linear time in the total size of preferences, or, $O(n^2)$ where $n$
+    is the number of "hospitals".
+
 ## Graphs
 
+* [Bipartite Matching](02-graphs/bipartite_matching.py)
+  - Compute a maximum matching in an unweighted bipartite graph using DFS to
+    find augmenting paths.  Implements the classic alternating-path approach for
+    bipartite matching.
 * [Dfs Tree](02-graphs/dfs_tree.py)
   - Run DFS and get a DFS tree
 * [Dijkstra](02-graphs/dijkstra.py)
@@ -13,6 +24,15 @@ A repository of Python snippets for different algorithms.
   - Kahn's algorithm produces a topological order of a DAG by repeatedly
     removing vertices with zero in-degree and updating their neighbors' in-degrees
     until none remain.
+* [Kosarajus Algorithm](02-graphs/kosarajus_algorithm.py)
+  - A strongly connected component (SCC) is a maximal set of vertices where
+    every vertex can reach every other by directed paths.  Kosaraju's algorithm
+    finds all SCCs by doing a DFS to record finish times, reversing all edges, then
+    running DFS again in reverse finish order.
+* [Rrt](02-graphs/rrt.py)
+  - Grow a rapidly-exploring random tree (RRT) toward a target while avoiding
+    obstacles.  Expands the tree incrementally by sampling feasible edges until the
+    goal region is reached or iterations are exhausted.
 * [Topological Sort With Dfs](02-graphs/topological_sort_with_dfs.py)
   - Use postorder DFS to get a reversed topological ordering.
 * [Union Find](02-graphs/union_find.py)
@@ -23,6 +43,10 @@ A repository of Python snippets for different algorithms.
 
 * [Consecutive Sum](03-sliding-searching-sorting/consecutive_sum.py)
   - Maximum consecutive sum in an array with possibly negative values.
+* [Longest Nonnegative](03-sliding-searching-sorting/longest_nonnegative.py)
+  - Find the length of the longest contiguous subarray with a non-negative sum.
+    Uses prefix sums and two-pointer scanning over forward minima and reverse
+    maxima.
 * [Prefix Sum](03-sliding-searching-sorting/prefix_sum.py)
   - Compute the prefix sum of a given list as input.
 * [Sliding Window](03-sliding-searching-sorting/sliding_window.py)
@@ -30,6 +54,11 @@ A repository of Python snippets for different algorithms.
 
 ## Dynamic programming
 
+* [Bellman Ford](04-dynamic-programming/bellman_ford.py)
+  - Single-source shortest paths (SSSP) with negative edges can be solved by
+    Bellman–Ford, which uses dynamic programming over path lengths to relax edges
+    up to $n−1$ times.  If a further relaxation still decreases a distance, it
+    indicates a negative-weight cycle reachable from the source.
 * [Dominating Set On Trees](04-dynamic-programming/dominating_set_on_trees.py)
   - Weighted Dominating Set on Trees.  Dynamic Programming.
 * [Edit Distance](04-dynamic-programming/edit_distance.py)
@@ -37,12 +66,23 @@ A repository of Python snippets for different algorithms.
     With applications in spell checking.
 * [Feedback Arc Set](04-dynamic-programming/feedback_arc_set.py)
   - Exact $2^n$ algorithm for Feedback Arc Set (with memoization).
+* [Floyd-warshall](04-dynamic-programming/floyd-warshall.py)
+  - APSP (All-Pairs Shortest Paths) is the problem of finding the shortest path
+    distances between every pair of vertices in a weighted graph.
+    
+    Floyd–Warshall is a classic dynamic programming algorithm for APSP.
+    
+    By updating `dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])` for each
+    intermediate vertex `k`, it computes shortest paths for all pairs in $O(n^3)$
+    time.
 * [Independent Set On Trees](04-dynamic-programming/independent_set_on_trees.py)
   - Weighted Independent Set on trees.
 * [Knapsack 01](04-dynamic-programming/knapsack_01.py)
   - 0-1-Knapsack dynamic programming.
 * [Knapsack Wr](04-dynamic-programming/knapsack_wr.py)
   - Knapsack with repetitions.  Dynamic Programming.
+* [Line Breaking](04-dynamic-programming/line_breaking.py)
+  - Use DP to minimize the raggedness of a paragraph of text.
 * [Linear Regression Queries](04-dynamic-programming/linear_regression_queries.py)
   - Given a set of $n$ $(x, y)$ points, compute the least squares for the data
     set.  In addition, create a data structure that can answer query
@@ -70,6 +110,10 @@ A repository of Python snippets for different algorithms.
 
 ## Geometry
 
+* [Bentley Ottmann](06-geometry/bentley_ottmann.py)
+  - Find all intersection points among a set of line segments using a
+    simplified Bentley–Ottmann sweep.  Maintains an active list of segments and
+    schedules intersection checks through an event queue.
 * [Closest Pair](06-geometry/closest_pair.py)
   - A divide and conquer algorithm for computing a closest pair of points in a
     set of $n$ points in the plane in time $O(n \log n)$.  It outputs both their
