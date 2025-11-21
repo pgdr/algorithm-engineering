@@ -108,59 +108,64 @@ A repository of Python snippets for different algorithms.
     with the operation being matrix multiplication.  Indeed, you can take elements
     over $\text{GL}_n(\mathbb{C})$, and answer such queries.
 
+## Divide and conquer
+
+* [Fast Fourier Transform](06-divide-and-conquer/fast_fourier_transform.py)
+  - Fast Fourier Transform using divide and conquer in time $O(n \log n)$.
+
 ## Geometry
 
-* [Bentley Ottmann](06-geometry/bentley_ottmann.py)
+* [Bentley Ottmann](07-geometry/bentley_ottmann.py)
   - Find all intersection points among a set of line segments using a
     simplified Bentley–Ottmann sweep.  Maintains an active list of segments and
     schedules intersection checks through an event queue.
-* [Closest Pair](06-geometry/closest_pair.py)
+* [Closest Pair](07-geometry/closest_pair.py)
   - A divide and conquer algorithm for computing a closest pair of points in a
     set of $n$ points in the plane in time $O(n \log n)$.  It outputs both their
     distance and the pair itself.
-* [Faces](06-geometry/faces.py)
+* [Faces](07-geometry/faces.py)
   - Compute the faces of a planar graph.
-* [Graham Scan](06-geometry/graham_scan.py)
+* [Graham Scan](07-geometry/graham_scan.py)
   - The Graham scan algorithm for computing the convex hull of a set of $n$
     points in the plane.  It runs in time $O(n \log n)$, which is optimal.
-* [Jarvis March](06-geometry/jarvis_march.py)
+* [Jarvis March](07-geometry/jarvis_march.py)
   - The Jarvis march (gift wrapping) algorithm for computing the convex hull of
     a set of $n$ points in $O(n \cdot h)$ time where $h$ is the number of points
     on the hull.
-* [Library](06-geometry/library.py)
+* [Library](07-geometry/library.py)
   - Some Geometry functions
-* [Shoelace Formula](06-geometry/shoelace_formula.py)
+* [Shoelace Formula](07-geometry/shoelace_formula.py)
   - The Shoelace algorithm for computing the area of a polygon.
 
 ## Exptime
 
-* [Coloring](07-exptime/coloring.py)
+* [Coloring](08-exptime/coloring.py)
   - Graph coloring.
-* [Permute](07-exptime/permute.py)
+* [Permute](08-exptime/permute.py)
   - Enumerate all permutations of a list
-* [Travelling Salesman](07-exptime/travelling_salesman.py)
+* [Travelling Salesman](08-exptime/travelling_salesman.py)
   - Travelling Salesman dynamic programming routine.
 
 ## Flow
 
-* [Edmonds Karp](08-flow/edmonds_karp.py)
+* [Edmonds Karp](09-flow/edmonds_karp.py)
   - The Edmonds–Karp variant of the Ford–Fulkerson algorithm for computing
     maximum flow.
 
 ## Strings
 
-* [Hashing](09-strings/hashing.py)
+* [Hashing](10-strings/hashing.py)
   - Rolling hash.
-* [Knuth Morris Pratt](09-strings/knuth_morris_pratt.py)
+* [Knuth Morris Pratt](10-strings/knuth_morris_pratt.py)
   - Knuth–Morris–Pratt (KMP) algorithm for pattern matching.
-* [Trie](09-strings/trie.py)
+* [Trie](10-strings/trie.py)
   - A basic implementation of a trie.
 
 ## Math
 
-* [Gcd](10-math/gcd.py)
+* [Gcd](11-math/gcd.py)
   - Extended Euclidean algorithm: compute the coefficients of Bézout's identity, i.e., $ax + by = \gcd(a, b)$.
-* [Primes](10-math/primes.py)
+* [Primes](11-math/primes.py)
   - Factorize a number into prime factors.
-* [Sieve](10-math/sieve.py)
+* [Sieve](11-math/sieve.py)
   - The Sieve of Eratosthenes — an ancient algorithm for finding all prime numbers up to any given limit.
