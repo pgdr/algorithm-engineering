@@ -41,18 +41,16 @@ def longest_prefix_suffix(pattern):
         if pattern[idx] == pattern[n]:
             n += 1
             lps[idx] = n
+        elif n != 0:
+            n = lps[n - 1]
         else:
-            if n != 0:
-                n = lps[n - 1]
-            else:
-                lps[idx] = 0
+            lps[idx] = 0
         idx += 1
     return lps
 
 
 def kmp(text, pattern, lps=None):
     """Yield indices idx where text[idx:idx+N] == P"""
-
     N, M = len(text), len(pattern)
 
     if lps is None:

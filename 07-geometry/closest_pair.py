@@ -3,9 +3,9 @@ set of $n$ points in the plane in time $O(n \\log n)$.  It outputs both their
 distance and the pair itself.
 """
 
+import itertools as IT
 import math
 from collections import namedtuple as T
-import itertools as IT
 
 Point = T("Point", "x y")
 Sol = T("Sol", "delta pair")

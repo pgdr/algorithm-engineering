@@ -41,7 +41,7 @@ def build_dp(points):
     for i in range(N):
         DP[(i, i)] = regression(*points[i])
 
-    for i in range(0, N):
+    for i in range(N):
         for j in range(i + 1, N):
             DP[(i, j)] = regression(*points[j], DP[(i, j - 1)])
     return DP

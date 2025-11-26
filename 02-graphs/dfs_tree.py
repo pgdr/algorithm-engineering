@@ -1,6 +1,7 @@
 """Run DFS and get a DFS tree"""
 
-from collections import defaultdict as D, namedtuple as T
+from collections import defaultdict as D
+from collections import namedtuple as T
 
 DiGraph = T("DiGraph", "V E")
 

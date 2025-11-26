@@ -1,7 +1,7 @@
 """Weighted Dominating Set on Trees.  Dynamic Programming."""
 
-from collections import namedtuple as T
 from collections import defaultdict as D
+from collections import namedtuple as T
 
 Tree = T("Tree", "r v e w")
 Dp = T("Dp", "pick skip_below skip_above")

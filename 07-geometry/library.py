@@ -1,7 +1,7 @@
 """Some Geometry functions"""
 
-import math
 import cmath
+import math
 
 
 class Vec:

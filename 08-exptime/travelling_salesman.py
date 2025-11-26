@@ -1,9 +1,9 @@
 """Travelling Salesman dynamic programming routine."""
 
-import math
-from collections import namedtuple as T
-from collections import defaultdict as D
 import itertools as IT
+import math
+from collections import defaultdict as D
+from collections import namedtuple as T
 
 Set = frozenset
 Place = T("Place", "name x y")
