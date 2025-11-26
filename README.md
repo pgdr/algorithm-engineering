@@ -2,6 +2,8 @@
 
 A repository of Python snippets for different algorithms.
 
+See the [appendix for source code](APPENDIX.md) for all of the algorithms.
+
 
 ## Greedy
 
