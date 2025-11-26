@@ -49,14 +49,14 @@ def generate_markdown(structure, base):
 
 
 def main():
-    base = Path(".").resolve()
+    base = Path().cwd()
     structure = collect_py_files(base)
     print(
         """# Algorithm engineering
 
 A repository of Python snippets for different algorithms.
 
-"""
+""",
     )
     print(generate_markdown(structure, base))
 

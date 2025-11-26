@@ -1,6 +1,6 @@
 """Basic implementation for SQRT decomposition.  The SQRT data structure can
-answer range queries such as sum, max, min in time O(√n) and can do update
-element in O(√n) as well.
+answer range queries such as sum, max, min in time $O(\\sqrt n)$ and can do update
+element in $O(\\sqrt n)$ as well.
 
 In theory, this data structure can take any [associative
 operation](https://en.wikipedia.org/wiki/Associative_property) (e.g., gcd,
@@ -16,7 +16,7 @@ class SQRT:
     """The SQRT data structure.
 
     The SQRT data structure can answer range queries such as sum, max,
-    min in time O(√n) and can do update element in O(√n) as well.
+    min in time $O(\\sqrt n)$ and can do update element in $O(\\sqrt n)$ as well.
 
     The update element functionality makes this a data structure that
     outperforms prefix sum in some cases.
@@ -74,7 +74,7 @@ class SQRT:
         SQRT(lst)[l:r] returns a dictionary with keys "sum", "min", and
         "max", mapping to their respective values for the given range.
 
-        Complexity: O(√n).
+        Complexity: $O(\\sqrt n)$.
 
         """
         if isinstance(coord, int):
@@ -128,7 +128,7 @@ class SQRT:
     def __setitem__(self, idx, val):
         """Update index idx to be val.
 
-        Complexity: O(√n).
+        Complexity: $O(\\sqrt n)$.
 
         """
         self._glob_min = min(self._glob_min, val - 1)

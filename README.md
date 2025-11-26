@@ -57,7 +57,7 @@ A repository of Python snippets for different algorithms.
 * [Bellman Ford](04-dynamic-programming/bellman_ford.py)
   - Single-source shortest paths (SSSP) with negative edges can be solved by
     Bellman–Ford, which uses dynamic programming over path lengths to relax edges
-    up to $n−1$ times.  If a further relaxation still decreases a distance, it
+    up to $n-1$ times.  If a further relaxation still decreases a distance, it
     indicates a negative-weight cycle reachable from the source.
 * [Dominating Set On Trees](04-dynamic-programming/dominating_set_on_trees.py)
   - Weighted Dominating Set on Trees.  Dynamic Programming.
@@ -99,8 +99,8 @@ A repository of Python snippets for different algorithms.
   - Basic implementation of a segment tree.
 * [Sqrt Decomposition](05-segment-trees/sqrt_decomposition.py)
   - Basic implementation for SQRT decomposition.  The SQRT data structure can
-    answer range queries such as sum, max, min in time O(√n) and can do update
-    element in O(√n) as well.
+    answer range queries such as sum, max, min in time $O(\sqrt n)$ and can do update
+    element in $O(\sqrt n)$ as well.
     
     In theory, this data structure can take any [associative
     operation](https://en.wikipedia.org/wiki/Associative_property) (e.g., gcd,
