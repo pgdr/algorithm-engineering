@@ -38,11 +38,52 @@ def complete(T, w):
 
 
 if __name__ == "__main__":
-    from pprint import pprint as print
+    import sys
+    import termios
+    import tty
 
-    words = ["car", "can", "cart", "cat", "cup", "dent", "denim", "do", "dog", "dot"]
+    def getch():
+        fd = sys.stdin.fileno()
+        old_settings = termios.tcgetattr(fd)
+        try:
+            tty.setraw(fd)
+            ch = sys.stdin.read(1)
+        finally:
+            termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+        return ch
+
+    DICT = "/usr/share/dict/words"
+    words = []
+    with open(DICT, "r") as fin:
+        for line in fin:
+            w = line.strip().lower()
+            if w.isalnum():
+                words.append(w)
     T = trie(words)
-    print(find(T, "do"))
-    print(find(T, "de"))
-    print(list(complete(T, "do")))
-    print(list(complete(T, "de")))
+    w = ""
+    inp = ""
+    entered = []
+    print("Enter word: ")
+    while True:
+        inp = getch()
+        if inp == "Q":
+            break
+        elif ord(inp) == 13:
+            entered.append(w)
+            w = ""
+            inp = ""
+        elif ord(inp) == 127:
+            inp = ""
+            if w:
+                w = w[: len(w) - 1]
+        w = w + inp
+        if w:
+            for idx, x in enumerate(list(complete(T, w))):
+                print(1 + idx, x)
+                if idx >= 29:
+                    break
+        print("=" * 20)
+        print(f'"{w}" (Type Q to exit, backspace to erase, enter to accept)')
+    print()
+    for w in entered:
+        print(w)

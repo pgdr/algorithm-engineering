@@ -11,10 +11,10 @@ is the number of "hospitals".
 def stable_matching(hospital_preferences, student_preferences):
     students = [s for s in student_preferences]
     hospitals = [h for h in hospital_preferences]
-    proposals = dict.fromkeys(hospitals, 0)
+    proposals = {h: 0 for h in hospitals}
     unmatched_hospitals = [h for h in hospitals]
-    student = dict.fromkeys(hospitals)
-    hospital = dict.fromkeys(students)
+    student = {h: None for h in hospitals}
+    hospital = {s: None for s in students}
     inrank = {s: {} for s in students}  # maps s to each hospital's s-ranking
     for s in students:
         for idx, h in enumerate(student_preferences[s]):
@@ -52,8 +52,8 @@ def _generate_instance(n):
     hospitals = [f"h{i}" for i in range(n)]
     students = [f"s{i}" for i in range(n)]
 
-    hospital_preferences = dict.fromkeys(hospitals[:n], students[:n])
-    student_preferences = dict.fromkeys(students[:n], hospitals[:n])
+    hospital_preferences = {h: students[:n] for h in hospitals[:n]}
+    student_preferences = {s: hospitals[:n] for s in students[:n]}
 
     for h in hospitals[:n]:
         hospital_preferences[h] = shuffle(hospital_preferences[h], n)
@@ -82,8 +82,8 @@ bipartite matching.
 
 
 def max_bipartite_matching(G, A, B):
-    matchA = dict.fromkeys(A)
-    matchB = dict.fromkeys(B)
+    matchA = {u: None for u in A}
+    matchB = {v: None for v in B}
 
     def dfs(u, seen):
         for v in G[u]:
@@ -199,7 +199,7 @@ from collections import deque
 
 
 def kahns(G):
-    indegree = dict.fromkeys(G.nodes, 0)
+    indegree = {u: 0 for u in G.nodes}
     for u in G.nodes:
         for v in G[u]:
             indegree[v] += 1
@@ -434,7 +434,8 @@ winstart = 0
 
 for winstart in range(1, len(data) - k + 1):
     acc += -data[winstart - 1] + data[winstart + k - 1]
-    best = max(best, acc)
+    if acc > best:
+        best = acc
 
 print(best)
 
@@ -620,7 +621,8 @@ def floyd_warshall(dist):
     for k in range(n):
         for i in range(n):
             for j in range(n):
-                dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
+                if dist[i][k] + dist[k][j] < dist[i][j]:
+                    dist[i][j] = dist[i][k] + dist[k][j]
     return dist
 
 ```
@@ -1529,9 +1531,10 @@ def orient(a, b, c):
     res = cross(b - a, c - a)
     if res == 0:
         return 0  # on line
-    if res > 0:
+    elif res > 0:
         return 1  # cw
-    return 2  # ccw
+    else:
+        return 2  # ccw
 
 
 def jarvis(points):
@@ -1678,7 +1681,7 @@ def orient(a, b, c):
 
 
 def in_angle(a, b, c, p):
-    """P inside angle created from the lines from a to b and a to c."""
+    """p inside angle created from the lines from a to b and a to c."""
     assert orient(a, b, c) != 0
     if orient(a, b, c) < 0:
         b, c = c, b
@@ -2118,14 +2121,55 @@ def complete(T, w):
 
 
 if __name__ == "__main__":
-    from pprint import pprint as print
+    import sys
+    import termios
+    import tty
 
-    words = ["car", "can", "cart", "cat", "cup", "dent", "denim", "do", "dog", "dot"]
+    def getch():
+        fd = sys.stdin.fileno()
+        old_settings = termios.tcgetattr(fd)
+        try:
+            tty.setraw(fd)
+            ch = sys.stdin.read(1)
+        finally:
+            termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+        return ch
+
+    DICT = "/usr/share/dict/words"
+    words = []
+    with open(DICT, "r") as fin:
+        for line in fin:
+            w = line.strip().lower()
+            if w.isalnum():
+                words.append(w)
     T = trie(words)
-    print(find(T, "do"))
-    print(find(T, "de"))
-    print(list(complete(T, "do")))
-    print(list(complete(T, "de")))
+    w = ""
+    inp = ""
+    entered = []
+    print("Enter word: ")
+    while True:
+        inp = getch()
+        if inp == "Q":
+            break
+        elif ord(inp) == 13:
+            entered.append(w)
+            w = ""
+            inp = ""
+        elif ord(inp) == 127:
+            inp = ""
+            if w:
+                w = w[: len(w) - 1]
+        w = w + inp
+        if w:
+            for idx, x in enumerate(list(complete(T, w))):
+                print(1 + idx, x)
+                if idx >= 29:
+                    break
+        print("=" * 20)
+        print(f'"{w}" (Type Q to exit, backspace to erase, enter to accept)')
+    print()
+    for w in entered:
+        print(w)
 
 ```
 
