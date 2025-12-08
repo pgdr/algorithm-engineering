@@ -7,6 +7,9 @@ See the [appendix for source code](APPENDIX.md) for all of the algorithms.
 
 ## Greedy
 
+* [Huffman](01-greedy/huffman.py)
+  - Compute the Huffman encoding of a provided text as input.
+    Outputs the encoding for each symbol.
 * [Stable Matching](01-greedy/stable_matching.py)
   - The Gale–Shapley algorithm for Stable Matching.  The algorithm runs
     in linear time in the total size of preferences, or, $O(n^2)$ where $n$
