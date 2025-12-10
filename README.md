@@ -115,6 +115,10 @@ See the [appendix for source code](APPENDIX.md) for all of the algorithms.
 
 ## Divide and conquer
 
+* [Closest Pair](06-divide-and-conquer/closest_pair.py)
+  - A divide and conquer algorithm for computing a closest pair of points in a
+    set of $n$ points in the plane in time $O(n \log n)$.  It outputs both their
+    distance and the pair itself.
 * [Fast Fourier Transform](06-divide-and-conquer/fast_fourier_transform.py)
   - Fast Fourier Transform using divide and conquer in time $O(n \log n)$.
 
@@ -124,10 +128,6 @@ See the [appendix for source code](APPENDIX.md) for all of the algorithms.
   - Find all intersection points among a set of line segments using a
     simplified Bentley–Ottmann sweep.  Maintains an active list of segments and
     schedules intersection checks through an event queue.
-* [Closest Pair](07-geometry/closest_pair.py)
-  - A divide and conquer algorithm for computing a closest pair of points in a
-    set of $n$ points in the plane in time $O(n \log n)$.  It outputs both their
-    distance and the pair itself.
 * [Faces](07-geometry/faces.py)
   - Compute the faces of a planar graph.
 * [Graham Scan](07-geometry/graham_scan.py)
