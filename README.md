@@ -139,6 +139,11 @@ See the [appendix for source code](APPENDIX.md) for all of the algorithms.
     Bellman–Ford, which uses dynamic programming over path lengths to relax edges
     up to $n-1$ times.  If a further relaxation still decreases a distance, it
     indicates a negative-weight cycle reachable from the source.
+* [Chromatic](04-dynamic-programming/chromatic.py)
+  - Compute the chromatic number of a graph using subset DP.
+    
+    The chromatic number of a graph is the minimum number of independent
+    sets whose union is the vertex set.
 * [Dominating Set On Trees](04-dynamic-programming/dominating_set_on_trees.py)
   - Weighted Dominating Set on Trees.  Dynamic Programming.
 * [Dreyfus-wagner](04-dynamic-programming/dreyfus-wagner.py)
